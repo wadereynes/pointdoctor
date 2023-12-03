@@ -1,0 +1,50 @@
+composer create-project --prefer-dist laravel/laravel=7.0.* pointdoctor
+
+composer 1.8.0
+
+composer require laravel/ui:^2.4
+
+npm install
+
+php artisan ui vue --auth
+
+npm install && npm run dev
+
+php artisan serve
+
+docker desktop 4.25.2
+
+php artisan make:model Role -m (create model role and migration file)
+php artisan migrate
+
+php artisan make:migration add_gender_to_users_table --table=users (adding column existing table)
+php artisan migrate
+
+php artisan db:seed
+
+===============
+LARAVEL 8.0
+composer create-project --prefer-dist laravel/laravel=8.0.* pointdoctor
+composer create-project laravel/laravel pointdoctor "8.0"
+composer require laravel/ui:^3.0
+npm install
+php artisan ui vue --auth
+npm install && npm run dev
+php artisan serve
+
+FIX LARAVEL 8.0 Mix issue
+delete node modules and package.lock
+"laravel-mix": "^6.0.49", -> package.json
+npm install --save-dev laravel-mix@latest
+"scripts": {
+    "dev": "npm run development",
+    "development": "mix",
+    "watch": "mix watch",
+    "watch-poll": "mix watch -- --watch-options-poll=1000",
+    "hot": "mix watch --hot",
+    "prod": "npm run production",
+    "production": "mix --production"
+},
+=================================
+
+

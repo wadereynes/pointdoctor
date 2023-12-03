@@ -1,0 +1,74 @@
+
+version: "3.8"
+services:
+  doctor_app:
+    container_name: doctor_app
+    build:
+      context: .
+      dockerfile: ./docker/php/Dockerfile
+    expose:
+      - 9000
+    volumes:
+      - .:/usr/src/app
+      - ./public:/usr/src/app/public
+    depends_on:
+      - doctor_db
+    networks:
+      - app_network
+
+  doctor_nginx:
+    container_name: doctor_nginx
+    build:
+      context: .
+      dockerfile: ./docker/nginx/Dockerfile
+    volumes:
+    - ./public:/usr/src/app/public
+    ports:
+      - 8000:80
+    depends_on:
+      - doctor_app
+    environment:
+      NGINX_FPM_HOST: doctor_app
+      NGINX_ROOT: /usr/src/app/public
+    networks:
+      - app_network
+
+  doctor_db:
+    container_name: doctor_db
+    image: mysql:8.0.20
+    restart: always
+    volumes:
+      - ./storage/db-data:/var/lib/mysql
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_DATABASE: doctor
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: root
+      MYSQL_PASSWORD: 
+    networks:
+      - app_network
+
+  doctor_redis:
+    container_name: doctor_redis
+    image: redis:latest
+    ports:
+      - 6379:6379
+    networks:
+      - app_network
+
+  phpmyadmin:
+    depends_on:
+      - doctor_db
+    image: phpmyadmin/phpmyadmin
+    environment:
+      - PMA_HOST=doctor_db
+      - PMA_PORT=3306
+    networks:
+      - app_network
+    ports:
+      - 8001:80
+
+networks:
+  app_network:
+    driver: bridge

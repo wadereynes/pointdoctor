@@ -1,0 +1,15 @@
+https://linuxize.com/post/how-to-remove-docker-images-containers-volumes-and-networks/
+https://www.youtube.com/watch?v=AGg8UJoQGWk&ab_channel=AdamThomas
+
+https://engineering.carsguide.com.au/how-to-dockerize-a-laravel-application-77a24ba669c5
+https://www.youtube.com/watch?v=kaQQVoEBumY
+
+ERROR FIX
+delete db-data folder
+lower_case_table_names = 1
+
+docker-compose up -d
+docker-compose down
+
+chown wade:wade
+chmod -R 777 foldername/
