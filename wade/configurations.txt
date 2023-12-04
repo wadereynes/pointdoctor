@@ -28,6 +28,8 @@ php artisan make:controller DoctorController -r
 
 https://stackoverflow.com/questions/63882034/target-class-does-not-exist-problem-in-laravel-8 (add namespace to RouteServiceProvider)
 
+php artisan route:list (will all routes)
+
 ===============
 LARAVEL 8.0
 composer create-project --prefer-dist laravel/laravel=8.0.* pointdoctor
