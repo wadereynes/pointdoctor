@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 04, 2023 at 06:51 PM
+-- Generation Time: Dec 05, 2023 at 03:53 PM
 -- Server version: 10.4.21-MariaDB
--- PHP Version: 7.4.24
+-- PHP Version: 7.4.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -124,8 +124,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `role_id`, `address`, `phone_number`, `department`, `image`, `education`, `description`, `remember_token`, `created_at`, `updated_at`, `gender`) VALUES
-(1, 'John Doe', 'john@doe.com', NULL, '$2y$10$a3xjhemsiwR/hkKmVzsx2eaLdQMS76XPfQtN0vjXUYqH1/AlEDq1e', 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-12-04 08:36:18', '2023-12-04 08:36:18', 'male'),
-(2, 'jane doe', 'jane@doe.com', NULL, '$2y$10$DYfqk3YntN99X6cgRfxnAuSRqDOGrPlSQRNyy/vT3glOwuHwS4er2', 1, 'talisay', '09123123123', 'it', '6UiNpEuoijWVDebJFXELM8QUussihQEUvR83m782.png', 'doctor', 'this is about', NULL, '2023-12-04 09:47:08', '2023-12-04 09:47:08', 'female');
+(1, 'John Doe', 'john@doe.com', NULL, '$2y$10$a3xjhemsiwR/hkKmVzsx2eaLdQMS76XPfQtN0vjXUYqH1/AlEDq1e', 1, 'address', '09123456', 'Neurologist', 'mYCHcra8jF0s6mcFBRdyGzDnK6porocdM98abu5I.png', 'it', 'this my story', NULL, '2023-12-04 08:36:18', '2023-12-05 06:19:21', 'male'),
+(2, 'jane doe', 'jane@doe.com', NULL, '$2y$10$DYfqk3YntN99X6cgRfxnAuSRqDOGrPlSQRNyy/vT3glOwuHwS4er2', 1, 'talisay', '09123123123', 'Dentist', '6UiNpEuoijWVDebJFXELM8QUussihQEUvR83m782.png', 'doctor', 'this is about', NULL, '2023-12-04 09:47:08', '2023-12-04 09:47:08', 'female'),
+(3, 'wade', 'w.reynes@createit.com', NULL, '$2y$10$ePJFh0QxappA9lu5cPnafuI5DBAOq7wwFR7yR.frwLuUtyo1QI.pS', 1, 'address', '09123456', 'Family-Physician', 'bWdqEYRJ0y4tLk04i25Rkm4EDFJFLb4biTxuwkOp.png', 'it', 'this is my  story', NULL, '2023-12-05 06:34:30', '2023-12-05 06:40:32', 'male');
 
 --
 -- Indexes for dumped tables
@@ -189,7 +190,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
