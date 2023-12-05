@@ -9,7 +9,7 @@
                 <i class="ik ik-edit bg-blue"></i>
                 <div class="d-inline">
                     <h5>Doctors</h5>
-                    <span>add doctor</span>
+                    <span>update doctor</span>
                 </div>
             </div>
         </div>
@@ -20,7 +20,7 @@
                         <a href="../index.html"><i class="ik ik-home"></i></a>
                     </li>
                     <li class="breadcrumb-item"><a href="#">Doctor</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Create</li>
+                    <li class="breadcrumb-item active" aria-current="page">Update</li>
                 </ol>
             </nav>
         </div>
@@ -37,12 +37,13 @@
         <div class="card">
             <div class="card-header"><h3>Add doctor</h3></div>
             <div class="card-body">
-                <form class="forms-sample" action="{{ route('doctor.store') }}" method="post" enctype="multipart/form-data">
+                <form class="forms-sample" action="{{ route('doctor.update', [$user->id]) }}" method="post" enctype="multipart/form-data">
                     @csrf
+                    @method('PUT')
                     <div class="row">
                         <div class="col-lg-6">
                             <label for="">Full name</label>
-                            <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" placeholder="doctor name" value="{{ old('name') }}">
+                            <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" placeholder="doctor name" value="{{ $user->name }}">
                             @error('name')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -51,7 +52,7 @@
                         </div>
                         <div class="col-lg-6">
                             <label for="">Email</label>
-                            <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" placeholder="email" value="{{ old('email') }}">
+                            <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" placeholder="email" value="{{ $user->email }}">
                             @error('email')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -73,9 +74,9 @@
                         <div class="col-lg-6">
                             <label for="">Gender</label>
                             <select class="form-control @error('gender') is-invalid @enderror" name="gender">
-                                <option value="">select</option>
-                                <option value="male">Male</option>
-                                <option value="female">Female</option>
+                                @foreach(['male', 'female'] as $gender)
+                                    <option value="{{ $gender }}" @if ($user->gender==$gender) selected @endif>{{ $gender }}</option>
+                                @endforeach
                             </select>
                             @error('gender')
                                 <span class="invalid-feedback" role="alert">
@@ -88,7 +89,7 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <label for="">Education</label>
-                            <input type="text" name="education" class="form-control @error('education') is-invalid @enderror" placeholder="doctor highest degree" value="{{ old('education') }}">
+                            <input type="text" name="education" class="form-control @error('education') is-invalid @enderror" placeholder="doctor highest degree" value="{{ $user->education }}">
                             @error('education')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -97,7 +98,7 @@
                         </div>
                         <div class="col-lg-6">
                             <label for="">Address</label>
-                            <input type="text" name="address" class="form-control @error('address') is-invalid @enderror" placeholder="doctor address" value="{{ old('address') }}">
+                            <input type="text" name="address" class="form-control @error('address') is-invalid @enderror" placeholder="doctor address" value="{{ $user->address }}">
                             @error('address')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -110,13 +111,10 @@
                         <div class="col-lg-6">
                             <label for="">Specialist</label>
                             <!-- <input type="text" name="department" class="form-control @error('department') is-invalid @enderror" value="{{ old('department') }}"> -->
-                            <select name="department" class="form-control @error('department') is-invalid @enderror">
-                                <option value="">Please select</option>
-                                <option value="Cardiologist">Cardiologist</option>
-                                <option value="Family-Physician">Family-Physician</option>
-                                <option value="Ophthalmologist">Ophthalmologist</option>
-                                <option value="Neurologist">Neurologist</option>
-                                <option value="Dentist">Dentist</option>
+                            <select name="department" class="form-control">
+                                @foreach(['Cardiologist', 'Family-Physician','Ophthalmologist', 'Neurologist', 'Dentist'] as $department)
+                                    <option value="{{ $department }}" @if ($user->department==$department) selected @endif>{{ $department }}</option>
+                                @endforeach
                             </select>
                             @error('department')
                                 <span class="invalid-feedback" role="alert">
@@ -126,7 +124,7 @@
                         </div>
                         <div class="col-lg-6">
                             <label for="">Phone number</label>
-                            <input type="text" name="phone_number" class="form-control @error('phone_number') is-invalid @enderror" value="{{ old('phone_number') }}">
+                            <input type="text" name="phone_number" class="form-control @error('phone_number') is-invalid @enderror" value="{{ $user->phone_number }}">
                             @error('phone_number')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -155,7 +153,7 @@
                                 <select name="role_id" class="form-control @error('role_id') is-invalid @enderror">
                                     <option value="">Please select role</option>
                                     @foreach(App\Models\Role::where('name', '!=', 'patient')->get() as $role)
-                                        <option value="{{ $role->id }}">{{ $role->name }}</option>
+                                        <option value="{{ $role->id }}" @if($user->role_id==$role->id) selected @endif>{{ $role->name }}</option>
                                     @endforeach
                                 </select>
                                 @error('role_id')
@@ -170,7 +168,7 @@
                     <div class="form-group">
                         <label for="exampleTextarea1">About</label>
                         <textarea class="form-control" id="exampleTextarea1" rows="4" name="description">
-                            {{ old('description') }}
+                            {{ $user->description }}
                         </textarea>
                         @error('description')
                             <span class="invalid-feedback" role="alert">

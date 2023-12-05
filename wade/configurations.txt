@@ -30,6 +30,8 @@ https://stackoverflow.com/questions/63882034/target-class-does-not-exist-problem
 
 php artisan route:list (will all routes)
 
+https://www.twilio.com/blog/repository-pattern-in-laravel-application
+
 ===============
 LARAVEL 8.0
 composer create-project --prefer-dist laravel/laravel=8.0.* pointdoctor

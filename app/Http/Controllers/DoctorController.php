@@ -14,7 +14,8 @@ class DoctorController extends Controller
      */
     public function index()
     {
-        return  "index";
+        $users = User::get();
+        return  view('admin.doctor.index', compact('users'));
     }
 
     /**
@@ -38,10 +39,7 @@ class DoctorController extends Controller
         $this->validateStore($request);
 
         $data = $request->all();
-        $image = $request->file('image');
-        $name = $image->hashName();
-        $destination = public_path('/images');
-        $image->move($destination, $name);
+        $name = (new User)->userAvatar($request);
 
         $data['image'] = $name;
         $data['password'] = bcrypt($request->password);
@@ -69,7 +67,8 @@ class DoctorController extends Controller
      */
     public function edit($id)
     {
-        return "edit";
+        $user = User::find($id);
+        return view('admin.doctor.edit', compact('user'));
     }
 
     /**
@@ -81,7 +80,25 @@ class DoctorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validateUpdate($request, $id);
+        $data = $request->all();
+        $user = User::find($id);
+        $imageName = $user->image;
+        $userPassword = $user->password;
+        if($request->hasFile('image')){
+            $imageName = (new User)->userAvatar($request);
+            unlink(public_path('images/'.$user->image));
+        }
+        $data['image'] = $imageName;
+        if($request->password){
+            $data['password'] = bcrypt($request->password);
+        }else{
+            $data['password'] = $userPassword;
+        }
+
+        $user->update($data);
+
+        return redirect()->route('doctor.index')->with('message', 'Doctor update successfully');
     }
 
     /**
@@ -107,6 +124,22 @@ class DoctorController extends Controller
                 'department'=>'required',
                 'phone_number'=>'required|numeric',
                 'image'=>'required|mimes:jpeg,jpg,png',
+                'role_id'=>'required',
+                'description'=>'required'
+        ]);
+    }
+
+    public function validateUpdate($request, $id)
+    {
+        return $this->validate($request, [
+                'name'=>'required',
+                'email'=>'required|unique:users,email,'.$id,
+                'gender'=>'required',
+                'education'=>'required',
+                'address'=>'required',
+                'department'=>'required',
+                'phone_number'=>'required|numeric',
+                'image'=>'mimes:jpeg,jpg,png',
                 'role_id'=>'required',
                 'description'=>'required'
         ]);
