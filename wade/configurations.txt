@@ -32,6 +32,13 @@ php artisan route:list (will all routes)
 
 https://www.twilio.com/blog/repository-pattern-in-laravel-application
 
+php artisan make:middleware Admin (for group per page)
+
+php artisan make:middleware Doctor (for group per page)
+
+php artisan make:controller AppointmentController -r
+php artisan make:model Appointment -m
+
 ===============
 LARAVEL 8.0
 composer create-project --prefer-dist laravel/laravel=8.0.* pointdoctor

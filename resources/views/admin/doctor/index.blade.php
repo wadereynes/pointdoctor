@@ -69,7 +69,7 @@
                                     <a href="{{ route('doctor.edit', [$user->id]) }}">
                                         <i class="ik ik-edit-2"></i>
                                     </a>
-                                    <a href="#">
+                                    <a href="{{ route('doctor.show', [$user->id]) }}">
                                         <i class="ik ik-trash-2"></i>
                                     </a>
                                 </div>

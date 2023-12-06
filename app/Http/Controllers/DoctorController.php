@@ -14,7 +14,8 @@ class DoctorController extends Controller
      */
     public function index()
     {
-        $users = User::get();
+        
+        $users = User::where('role_id', '!=', 3)->get();
         return  view('admin.doctor.index', compact('users'));
     }
 
@@ -56,7 +57,8 @@ class DoctorController extends Controller
      */
     public function show($id)
     {
-        return "show";
+        $user = User::find($id);
+        return view('admin.doctor.delete', compact('user'));
     }
 
     /**
@@ -109,7 +111,17 @@ class DoctorController extends Controller
      */
     public function destroy($id)
     {
-        //
+        if(auth()->user()->id == $id) {
+            abort(401);
+        }
+
+        $user = User::find($id);
+        $userDelete = $user->delete();
+        if($userDelete) {
+            unlink(public_path('images/'.$user->image));
+        }
+
+        return redirect()->route('doctor.index')->with('message', 'Doctor deleted successfully');
     }
 
     public function validateStore($request)
