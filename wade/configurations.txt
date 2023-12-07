@@ -39,6 +39,8 @@ php artisan make:middleware Doctor (for group per page)
 php artisan make:controller AppointmentController -r
 php artisan make:model Appointment -m
 
+php artisan make:model Time -m
+
 ===============
 LARAVEL 8.0
 composer create-project --prefer-dist laravel/laravel=8.0.* pointdoctor
