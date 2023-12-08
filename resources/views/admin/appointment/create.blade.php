@@ -28,12 +28,19 @@
 </div>
 
 <div class="container">
+        @if(Session::has('message'))
+            <div class="alert bg-success alert-success text-white">
+                {{ Session::get('message') }}
+            </div>
+        @endif
+    <form action="{{ route('appointment.store') }}" method="post">
+    @csrf
     <div class="card">
         <div class="card-header">
             Choose date
         </div>
         <div class="card-body">
-        <input type="text" class="form-control datetimepicker-input" id="datepicker" data-toggle="datetimepicker" data-target="#datepicker">
+        <input type="text" class="form-control datetimepicker-input" id="datepicker" data-toggle="datetimepicker" data-target="#datepicker" name="date">
         </div>
     </div>
 
@@ -181,6 +188,7 @@
             <button type="submit" class="btn btn-primary">Submit</button>
         </div>
     </div>
+    </form>
 </div>
 
 <style type="text/css">

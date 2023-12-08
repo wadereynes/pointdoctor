@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Appointment;
+use App\Models\Time;
+
 
 class AppointmentController extends Controller
 {
@@ -34,7 +37,20 @@ class AppointmentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $appointment = Appointment::create([
+            'user_id' => auth()->user()->id,
+            'date' => $request->date
+        ]);
+        
+        foreach($request->time as $time) {
+            Time::create([
+                'appointment_id' => $appointment->id,
+                'time' => $time
+                
+            ]);
+        }
+
+        return redirect()->back()->with('message', 'Appointment created for'.$request->date);
     }
 
     /**
