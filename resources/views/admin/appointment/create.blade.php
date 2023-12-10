@@ -33,6 +33,13 @@
                 {{ Session::get('message') }}
             </div>
         @endif
+
+        @foreach($errors->all() as $error)
+            <div class="alert bg-danger alert-danger text-white">
+                {{ $error }}
+            </div>
+        @endforeach
+
     <form action="{{ route('appointment.store') }}" method="post">
     @csrf
     <div class="card">

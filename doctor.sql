@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 07, 2023 at 03:47 PM
+-- Generation Time: Dec 10, 2023 at 05:58 PM
 -- Server version: 10.4.21-MariaDB
--- PHP Version: 7.4.33
+-- PHP Version: 7.4.24
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -34,6 +34,14 @@ CREATE TABLE `appointments` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `appointments`
+--
+
+INSERT INTO `appointments` (`id`, `user_id`, `date`, `created_at`, `updated_at`) VALUES
+(1, 4, '2023-12-10', '2023-12-10 05:09:34', '2023-12-10 05:09:34'),
+(2, 2, '2023-12-10', '2023-12-10 05:31:43', '2023-12-10 05:31:43');
 
 -- --------------------------------------------------------
 
@@ -125,6 +133,60 @@ CREATE TABLE `times` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `times`
+--
+
+INSERT INTO `times` (`id`, `appointment_id`, `time`, `status`, `created_at`, `updated_at`) VALUES
+(49, 2, '6:00am', 0, '2023-12-10 05:31:43', '2023-12-10 05:31:43'),
+(50, 2, '6:20am', 0, '2023-12-10 05:31:43', '2023-12-10 05:31:43'),
+(51, 2, '6:40am', 0, '2023-12-10 05:31:43', '2023-12-10 05:31:43'),
+(52, 1, '6:00am', 0, '2023-12-10 07:21:36', '2023-12-10 07:21:36'),
+(53, 1, '6:20am', 0, '2023-12-10 07:21:36', '2023-12-10 07:21:36'),
+(54, 1, '6:40am', 0, '2023-12-10 07:21:36', '2023-12-10 07:21:36'),
+(55, 1, '7:00am', 0, '2023-12-10 07:21:36', '2023-12-10 07:21:36'),
+(56, 1, '7:20am', 0, '2023-12-10 07:21:36', '2023-12-10 07:21:36'),
+(57, 1, '7:40am', 0, '2023-12-10 07:21:36', '2023-12-10 07:21:36'),
+(58, 1, '8:00am', 0, '2023-12-10 07:21:36', '2023-12-10 07:21:36'),
+(59, 1, '8:20am', 0, '2023-12-10 07:21:36', '2023-12-10 07:21:36'),
+(60, 1, '8:40am', 0, '2023-12-10 07:21:36', '2023-12-10 07:21:36'),
+(61, 1, '9:00am', 0, '2023-12-10 07:21:36', '2023-12-10 07:21:36'),
+(62, 1, '9:20am', 0, '2023-12-10 07:21:36', '2023-12-10 07:21:36'),
+(63, 1, '9:40am', 0, '2023-12-10 07:21:36', '2023-12-10 07:21:36'),
+(64, 1, '10:00am', 0, '2023-12-10 07:21:36', '2023-12-10 07:21:36'),
+(65, 1, '10:20am', 0, '2023-12-10 07:21:36', '2023-12-10 07:21:36'),
+(66, 1, '10:40am', 0, '2023-12-10 07:21:36', '2023-12-10 07:21:36'),
+(67, 1, '11:00am', 0, '2023-12-10 07:21:36', '2023-12-10 07:21:36'),
+(68, 1, '11:20am', 0, '2023-12-10 07:21:36', '2023-12-10 07:21:36'),
+(69, 1, '11:40am', 0, '2023-12-10 07:21:36', '2023-12-10 07:21:36'),
+(70, 1, '01:00pm', 0, '2023-12-10 07:21:36', '2023-12-10 07:21:36'),
+(71, 1, '01:20pm', 0, '2023-12-10 07:21:36', '2023-12-10 07:21:36'),
+(72, 1, '01:40pm', 0, '2023-12-10 07:21:36', '2023-12-10 07:21:36'),
+(73, 1, '02:00pm', 0, '2023-12-10 07:21:36', '2023-12-10 07:21:36'),
+(74, 1, '02:20pm', 0, '2023-12-10 07:21:36', '2023-12-10 07:21:36'),
+(75, 1, '02:40pm', 0, '2023-12-10 07:21:36', '2023-12-10 07:21:36'),
+(76, 1, '03:00pm', 0, '2023-12-10 07:21:36', '2023-12-10 07:21:36'),
+(77, 1, '03:20pm', 0, '2023-12-10 07:21:36', '2023-12-10 07:21:36'),
+(78, 1, '03:40pm', 0, '2023-12-10 07:21:36', '2023-12-10 07:21:36'),
+(79, 1, '04:00pm', 0, '2023-12-10 07:21:36', '2023-12-10 07:21:36'),
+(80, 1, '04:20pm', 0, '2023-12-10 07:21:36', '2023-12-10 07:21:36'),
+(81, 1, '04:40pm', 0, '2023-12-10 07:21:36', '2023-12-10 07:21:36'),
+(82, 1, '05:00pm', 0, '2023-12-10 07:21:36', '2023-12-10 07:21:36'),
+(83, 1, '05:20pm', 0, '2023-12-10 07:21:36', '2023-12-10 07:21:36'),
+(84, 1, '05:40pm', 0, '2023-12-10 07:21:36', '2023-12-10 07:21:36'),
+(85, 1, '06:00pm', 0, '2023-12-10 07:21:36', '2023-12-10 07:21:36'),
+(86, 1, '06:20pm', 0, '2023-12-10 07:21:36', '2023-12-10 07:21:36'),
+(87, 1, '06:40pm', 0, '2023-12-10 07:21:36', '2023-12-10 07:21:36'),
+(88, 1, '07:00pm', 0, '2023-12-10 07:21:36', '2023-12-10 07:21:36'),
+(89, 1, '07:20pm', 0, '2023-12-10 07:21:36', '2023-12-10 07:21:36'),
+(90, 1, '07:40pm', 0, '2023-12-10 07:21:36', '2023-12-10 07:21:36'),
+(91, 1, '08:00pm', 0, '2023-12-10 07:21:36', '2023-12-10 07:21:36'),
+(92, 1, '08:20pm', 0, '2023-12-10 07:21:36', '2023-12-10 07:21:36'),
+(93, 1, '08:40pm', 0, '2023-12-10 07:21:36', '2023-12-10 07:21:36'),
+(94, 1, '09:00pm', 0, '2023-12-10 07:21:36', '2023-12-10 07:21:36'),
+(95, 1, '09:20pm', 0, '2023-12-10 07:21:36', '2023-12-10 07:21:36'),
+(96, 1, '09:40pm', 0, '2023-12-10 07:21:36', '2023-12-10 07:21:36');
+
 -- --------------------------------------------------------
 
 --
@@ -155,11 +217,12 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `role_id`, `address`, `phone_number`, `department`, `image`, `education`, `description`, `remember_token`, `created_at`, `updated_at`, `gender`) VALUES
-(1, 'Admin', 'john@doe.com', NULL, '$2y$10$a3xjhemsiwR/hkKmVzsx2eaLdQMS76XPfQtN0vjXUYqH1/AlEDq1e', 2, 'address', '09123456', 'Neurologist', 'mYCHcra8jF0s6mcFBRdyGzDnK6porocdM98abu5I.png', 'it', 'this my story', NULL, '2023-12-04 08:36:18', '2023-12-06 04:05:59', 'male'),
-(2, 'jane doe', 'jane@doe.com', NULL, '$2y$10$DYfqk3YntN99X6cgRfxnAuSRqDOGrPlSQRNyy/vT3glOwuHwS4er2', 1, 'talisay', '09123123123', 'Dentist', '6UiNpEuoijWVDebJFXELM8QUussihQEUvR83m782.png', 'doctor', 'this is about', NULL, '2023-12-04 09:47:08', '2023-12-04 09:47:08', 'female'),
-(4, 'wadereynes', 'w.reynes@createit.com', NULL, '$2y$10$PWb9sECe6RUGGk49FbCDR.wloWRq24gK1iBEC2d/bChKBg0GupLeq', 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-12-06 06:13:12', '2023-12-06 06:13:12', 'male'),
-(5, 'patient', 'w_test@mail.com', NULL, '$2y$10$INbMDcWy7Wrt0h/xUcZfgOUrRF9EyJLiwvCJaWzssFvwbf915qDn.', 1, 'address', '09123456', 'Dentist', 'OC8U4XUCOqCTXMnIzpEaeG3y8pv6Gn0pD604p5NE.png', 'it', 'this is comment', NULL, '2023-12-06 23:56:57', '2023-12-06 23:56:57', 'male'),
-(6, 'kruk', 'wadereynes@gmail.com', NULL, '$2y$10$tOtQxKQVIVav4uEEsKk5ROhlUGE6/PuNxMYcoXosDqs93/Pc.SQMa', 1, 'address', '09123456', 'Family-Physician', 'zNWhyaUxvnCEnXEYjhnXdzAsQXI0ZYwC4UOO4D2o.png', 'it', 'this is me', NULL, '2023-12-07 00:14:19', '2023-12-07 00:14:19', 'male');
+(1, 'John Doe', 'john@doe.com', NULL, '$2y$10$a3xjhemsiwR/hkKmVzsx2eaLdQMS76XPfQtN0vjXUYqH1/AlEDq1e', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-12-04 08:36:18', '2023-12-04 08:36:18', 'male'),
+(2, 'jane doe', 'jane@doe.com', NULL, '$2y$10$DYfqk3YntN99X6cgRfxnAuSRqDOGrPlSQRNyy/vT3glOwuHwS4er2', 1, 'talisay', '09123123123', 'it', '6UiNpEuoijWVDebJFXELM8QUussihQEUvR83m782.png', 'doctor', 'this is about', NULL, '2023-12-04 09:47:08', '2023-12-04 09:47:08', 'female'),
+(3, 'wadereynes', 'wadeshow25@gmail.com', NULL, '$2y$10$RnCc4X1Ma7j9uJBpGCh2K.FRRkA8FtjCq3EbA1bIfKErX3ImrrpUu', 1, 'talisay', '09123123123', 'Neurologist', 'V5kf0X4bcyQslbIcMXVML8AuqbwnWtT26JWNxagj.jpg', 'it', 'about my life', NULL, '2023-12-06 09:42:28', '2023-12-06 09:54:13', 'male'),
+(4, 'doctor', 'doctor@doctor.com', NULL, '$2y$10$omIP0Z68FJhOUk.wgy.a3OFlqxFlm5kNGc4/0HeTM6G.tXQg4eIW6', 1, 'talisay', '09123123123', 'Cardiologist', 'CkJ4lbgQLvygODi15rgordREwgKkcFfUlmYOprVL.png', 'doctor', 'this is doctor', NULL, '2023-12-10 05:07:57', '2023-12-10 05:07:57', 'male'),
+(5, 'admin', 'admin@admin.com', NULL, '$2y$10$NUnMB.ZVwy8aMK8dyuij1eBsleanmhARuTDzDsOrq6NS5grud40Ae', 2, 'talisay', '09123123123', 'Cardiologist', 'VqPGvHuRqU3d0Bl2NFiovPlVOi98r3AiP2zJoPVm.png', 'doctor', 'this is admin', NULL, '2023-12-10 05:08:57', '2023-12-10 05:08:57', 'male'),
+(6, 'Guest', 'guest@guest.com', NULL, '$2y$10$Y005rRc7x9CI64ijhBABXuaJj6ajAh51YWNrLv37MfC4ecU.Nn0ke', 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-12-10 07:58:53', '2023-12-10 07:58:53', 'male');
 
 --
 -- Indexes for dumped tables
@@ -217,7 +280,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `appointments`
 --
 ALTER TABLE `appointments`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -241,13 +304,13 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `times`
 --
 ALTER TABLE `times`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=97;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

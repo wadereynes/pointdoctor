@@ -65,5 +65,6 @@ npm install --save-dev laravel-mix@latest
     "production": "mix --production"
 },
 =================================
-
+chat - https://www.youtube.com/watch?v=xTQ1Mm8SmXo
+chat - https://www.youtube.com/watch?v=PdURRxw8HIQ&list=PLRKk5RpSyRSVGzvQ8zzkLtb-cU_M6F9GK&index=37
 
