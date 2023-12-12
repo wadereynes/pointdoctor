@@ -13,15 +13,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'FrontendController@index');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-});
+Route::get('/new-appointment/{doctorId}/{date}', 'FrontendController@show')->name('create.appointment');
 
-Auth::routes();
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// });
+
+// Auth::routes();
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

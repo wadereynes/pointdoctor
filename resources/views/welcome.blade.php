@@ -11,8 +11,8 @@
             <h2>Create an account & Book you appointment</h2>
             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Libero non quisquam deleniti delectus dignissimos quasi qui et aspernatur a eius natus nobis consectetur exercitationem, velit maxime nulla eveniet similique deserunt.</p>
             <div class="mt-5">
-                <button class="btn btn-success">Register as Patient</button>
-                <button class="btn btn-secondary">Login</button>
+                <a href="{{ url('/register') }}" class="btn btn-success">Register as Patient</a>
+                <a href="{{ url('/login') }}" class="btn btn-secondary">Login</a>
             </div>
         </div>
     </div>
@@ -51,21 +51,25 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @forelse($doctors as $doctor)
                         <tr>
                             <th scope="row"></th>
                             <td>
-                                <img src="/" alt="..." width="100px" style="border-radius: 50%;">
+                                <img src="{{ asset('images') }}/{{ $doctor->doctor->image }}" alt="..." width="100px" style="border-radius: 50%;">
                             </td>
                             <td>
-                                Name of doctor
+                                {{ $doctor->doctor->name }}
                             </td>
                             <td>
-                                Cardiologist
+                                {{ $doctor->doctor->department }}
                             </td>
                             <td>
-                                <button class="btn btn-success">Book Appointment</button>
+                                <a href="{{ route('create.appointment', [$doctor->user_id, $doctor->date]) }}" class="btn btn-success">Book Appointment</a>
                             </td>
                         </tr>
+                        @empty
+                        <td>No doctors available</td>
+                        @endforelse
                     </tbody>
                 </table>
             </div>
