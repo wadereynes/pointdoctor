@@ -43,6 +43,16 @@ php artisan make:model Time -m
 
 php artisan make:controller FrontendController
 
+php artisan make:controller DashboardController
+
+php artisan make:model Booking -m
+
+php artisan migrate
+
+php artisan make:migration add_date_to_bookings_table --table=bookings
+
+php artisan migrate
+
 
 ===============
 LARAVEL 8.0

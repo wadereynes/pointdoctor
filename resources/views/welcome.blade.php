@@ -19,22 +19,24 @@
     <hr>
 
     <!-- search doctor -->
-    <div class="card">
-        <div class="card-body">
-            <div class="card-header">Find Doctors</div>
+    <form action="{{ url('/') }}" method="GET">
+        <div class="card">
             <div class="card-body">
-                <div class="row">
-                    <div class="col-md-8">
-                        <input id="datepicker" type="text" name="date" class="form-control">
+                <div class="card-header">Find Doctors</div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <input id="datepicker" type="text" name="date" class="form-control" autocomplete="off">
+                        </div>
+                        <div class="col-md-4">
+                            <button class="btn btn-primary" type="submit">Find Doctors</button>
+                        </div>
                     </div>
-                    <div class="col-md-4">
-                        <button class="btn btn-primary" type="submit">Find Doctors</button>
-                    </div>
+                    
                 </div>
-                
             </div>
         </div>
-    </div>
+    </form>
 
     <!-- display doctors -->
     <div class="card">

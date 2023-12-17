@@ -17,11 +17,11 @@ Route::get('/', 'FrontendController@index');
 
 Route::get('/new-appointment/{doctorId}/{date}', 'FrontendController@show')->name('create.appointment');
 
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// });
+Route::post('/book/appointment', 'FrontendController@store')->name('booking.appointment')->middleware('auth');
 
-// Auth::routes();
+Route::get('/dashboard', 'DashboardController@index');
+
+Auth::routes();
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -87,10 +87,18 @@
     </div>
 
     <script>
+        var dateToday = new Date();
         $( function() {
+            // $("#datepicker").datepicker({
+            //     dateFormat:"yy-mm-dd"
+            // }).val();
+
             $("#datepicker").datepicker({
-                dateFormat:"yy-mm-dd"
-            }).val();
+                dateFormat:"yy-mm-dd",
+                showButtonPanel: true,
+                numberOfMonths: 2,
+                minDate: dateToday
+            });
         });
     </script>
 
