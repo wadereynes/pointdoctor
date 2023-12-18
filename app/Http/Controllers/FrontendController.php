@@ -8,6 +8,7 @@ use App\Models\Appointment;
 use App\Models\Time;
 use App\Models\User;
 use App\Models\Booking;
+use App\Mail\AppointmentMail;
 
 class FrontendController extends Controller
 {
@@ -64,6 +65,20 @@ class FrontendController extends Controller
 
         Time::where('appointment_id', $request->appointmentId)->where('time',$request->time)->update(['status'=>1]);
 
+        // send email notification
+        $doctorName = User::where('id', $request->doctorId)->first();
+        $mailData = [
+            'name' => auth()->user()->name,
+            'time' => $request->time,
+            'date' => $request->date,
+            'doctorName' => $doctorName->name
+        ];
+        try {
+            \Mail::to(auth()->user()->email)->send(new AppointmentMail($mailData));
+        } catch (\Exception $e) {
+
+        }
+        
         return redirect()->back()->with('message', 'Your appointment was booked');
     }
 
@@ -73,5 +88,11 @@ class FrontendController extends Controller
             ->where('user_id', auth()->user()->id)
             ->whereDate('created_at', date('Y-m-d'))
             ->exists();
+    }
+
+    public function myBookings()
+    {
+        $appointments = Booking::latest()->where('user_id', auth()->user()->id)->get();
+        return view('booking.index', compact('appointments'));
     }
 }

@@ -53,6 +53,15 @@ php artisan make:migration add_date_to_bookings_table --table=bookings
 
 php artisan migrate
 
+php artisan make:mail AppointmentMail
+
+npm i vuejs-datepicker
+
+npm install moment --save
+
+https://preview.themeforest.net/item/tantum-car-scooter-rental-services-wordpress-theme/full_screen_preview/24757667?_ga=2.77562325.1302519090.1702909820-1651062941.1702909820
+
+npm run watch
 
 ===============
 LARAVEL 8.0
