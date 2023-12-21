@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 use App\Models\User;
+use App\Models\Time;
 
 class Appointment extends Model
 {
@@ -17,6 +18,10 @@ class Appointment extends Model
 
         return $this->belongsTo(User::class, 'user_id', 'id');
 
+    }
+
+    public function times(){
+        return $this->hasMany(Time::class);
     }
 
 

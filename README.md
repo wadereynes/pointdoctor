@@ -21,7 +21,7 @@ npm run dev
 
 ```php
 docker-compose up -d
-
+npm run watch
 ```
 
 ## Database Seed

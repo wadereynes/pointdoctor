@@ -59,9 +59,13 @@ npm i vuejs-datepicker
 
 npm install moment --save
 
+php artisan make:controller ProfileController
+
 https://preview.themeforest.net/item/tantum-car-scooter-rental-services-wordpress-theme/full_screen_preview/24757667?_ga=2.77562325.1302519090.1702909820-1651062941.1702909820
 
 npm run watch
+
+npm i vue-spinner
 
 ===============
 LARAVEL 8.0

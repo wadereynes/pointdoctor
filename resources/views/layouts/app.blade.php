@@ -43,8 +43,8 @@
                     </ul>
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ms-auto">
-                        @if(auth()->user()->role->name === 'patient')
+                    <ul class="navbar-nav ms-auto">   
+                        @if(auth()->check() && auth()->user()->role->name === 'patient')
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('my.booking') }}">{{ __('My Booking') }}</a>
                             </li>

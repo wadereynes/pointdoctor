@@ -3,9 +3,10 @@
         <div class="card">
             <div class="card-header">Find Doctors</div>
             <div class="card-body">
-                <datepicker></datepicker>
+                <datepicker class="my-datepicker" calendar-class="my-datepicker_calendar" :disabledDates="disabledDates" :format="customDate" v-model="time" :inline=true></datepicker>
             </div>
         </div>
+
 
         <div class="card">
             <div class="card-header">Doctors</div>
@@ -19,17 +20,27 @@
                             <th>Expertise</th>
                             <th>Booking</th>
                         </tr>
-                        <tbody>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                        </tbody>
                     </thead>
+                        <tbody>
+                            <tr v-for="(d, index) in doctors">
+                                <td scope="row">{{ index+1 }}</td>
+                                <td>
+                                    <img :src="'/images/'+ d.doctor.image" width="80" alt="...">
+                                </td>
+                                <td>{{ d.doctor.name }}</td>
+                                <td>{{ d.doctor.department }}</td>
+                                <td>
+                                    <a :href="'/new-appointment/'+ d.user_id + '/' + d.date" class="btn btn-success">Book Appointment</a>
+                                </td>
+                            </tr>
+                            <td v-if="doctors.length==0">No doctors available for {{ this.time }}</td>
+                        </tbody>
+                    
                 </table>
+
+                <div class="text-center">
+                    <pulse-loader :loading="loading" :color="color" :size="size"></pulse-loader>
+                </div>
             </div>
         </div>
     </div>
@@ -37,15 +48,52 @@
 
 <script>
     import datepicker from 'vuejs-datepicker';
-    import moment from 'moment'
+    import moment from 'moment';
+    import PulseLoader from 'vue-spinner/src/PulseLoader.vue';
     export default{
         data(){
             return{
-
+                time: '',
+                doctors:[],
+                loading: false,
+                disabledDates: {
+                    to: new Date(Date.now() - 86400000)
+                }
             }
         },
         components:{
-            datepicker
+            datepicker,
+            PulseLoader
+        },
+        methods: {
+            customDate(date) {
+                this.loading = true;
+
+                this.time = moment(date).format('YYYY-MM-DD');
+                axios.post('/api/finddoctors', {date:this.time}).then((response) => {
+                    setTimeout(()=>{
+                        this.loading = false
+                        this.doctors = response.data
+                        
+                    }, 1000)
+                    
+                }).catch((error)=> {
+                    alert('error');
+                })
+            }
+        },
+        mounted(){
+            this.loading = true
+            axios.get('/api/doctors/today').then((response)=> {
+                this.doctors = response.data
+                this.loading = false
+            })
         }
     }
 </script>
+<style scoped>
+    .my-datepicker >>> .my-datepicker_calendar{
+        width: 100%;
+        height: 330px;
+    }
+</style>
