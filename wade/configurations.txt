@@ -67,6 +67,10 @@ npm run watch
 
 npm i vue-spinner
 
+php artisan make:middleware Patient
+
+php artisan make:controller PatientlistController
+
 ===============
 LARAVEL 8.0
 composer create-project --prefer-dist laravel/laravel=8.0.* pointdoctor
