@@ -25,4 +25,10 @@ class PatientlistController extends Controller
         $booking->save();
         return redirect()->back();
     }
+
+    public function allTimeAppointment()
+    {
+        $bookings = Booking::latest()->paginate(20);
+        return view('admin.patientlist.index', compact('bookings'));
+    }
 }
