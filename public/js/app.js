@@ -4940,8 +4940,11 @@ var render = function render() {
         name: "show",
         rawName: "v-show",
         value: index == _vm.inputs.length - 1,
-        expression: "index == inputs.length-1"
+        expression: "index==inputs.length-1"
       }],
+      staticStyle: {
+        color: "green"
+      },
       attrs: {
         href: ""
       },
@@ -4951,7 +4954,7 @@ var render = function render() {
           return _vm.add(index);
         }
       }
-    }, [_vm._v("Add More")]), _vm._v(" "), _c("a", {
+    }, [_vm._v("Add More Medicine")]), _vm._v(" "), _c("a", {
       directives: [{
         name: "show",
         rawName: "v-show",
