@@ -49,4 +49,5 @@ Route::group(['middleware'=>['auth', 'doctor']], function() {
     Route::get('patient-today','PrescriptionController@index')->name('patients.today');
     Route::post('/prescription', 'PrescriptionController@store')->name('prescription');
     Route::get('/prescription/{userId}/{date}', 'PrescriptionController@show')->name('prescription.show');
+    Route::get('/prescribed-patients', 'PrescriptionController@patientsFromPrescription')->name('prescribed.patients');
 });
