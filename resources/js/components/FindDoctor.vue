@@ -35,7 +35,7 @@
                             </tr>
                             <td v-if="doctors.length==0">No doctors available for {{ this.time }}</td>
                         </tbody>
-                    
+
                 </table>
 
                 <div class="text-center">
@@ -74,9 +74,9 @@
                     setTimeout(()=>{
                         this.loading = false
                         this.doctors = response.data
-                        
+
                     }, 1000)
-                    
+
                 }).catch((error)=> {
                     alert('error');
                 })

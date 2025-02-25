@@ -4,12 +4,12 @@
                         <span class="float-none float-sm-right mt-1 mt-sm-0 text-center">Crafted with <i class="fa fa-heart text-danger"></i> by <a href="http://lavalite.org/" class="text-dark" target="_blank">Lavalite</a></span>
                     </div>
                 </footer>
-                
+
             </div>
         </div>
-        
-        
-        
+
+
+
 
         <div class="modal fade apps-modal" id="appsModal" tabindex="-1" role="dialog" aria-labelledby="appsModalLabel" aria-hidden="true" data-backdrop="false">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="ik ik-x-circle"></i></button>
@@ -95,7 +95,7 @@
                 </div>
             </div>
         </div>
-        
+
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
         <script>window.jQuery || document.write('<script src="src/js/vendor/jquery-3.3.1.min.js"><\/script>')</script>
         <script src="{{asset('template/plugins/popper.js/dist/umd/popper.min.js')}}"></script>
@@ -116,6 +116,7 @@
         <script src="{{asset('template/js/widgets.js')}}"></script>
         <script src="{{asset('template/js/charts.js')}}"></script>
         <script src="{{asset('template/dist/js/theme.min.js')}}"></script>
+        <script src="{{ asset('js/app.js') }}" defer></script>
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script type="text/javascript">
             $(document).ready(function() {
