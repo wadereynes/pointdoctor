@@ -9,6 +9,7 @@ use App\Models\Time;
 use App\Models\User;
 use App\Models\Booking;
 use App\Mail\AppointmentMail;
+use App\Models\Prescription;
 
 class FrontendController extends Controller
 {
@@ -29,7 +30,7 @@ class FrontendController extends Controller
     public function show($doctorId, $date)
     {
         $appointment = Appointment::where('user_id', $doctorId)->where('date', $date)->first();
-        
+
         $times = Time::where('appointment_id', $appointment->id)->where('status', 0)->get();
 
         $user = User::where('id', $doctorId)->first();
@@ -78,7 +79,7 @@ class FrontendController extends Controller
         } catch (\Exception $e) {
 
         }
-        
+
         return redirect()->back()->with('message', 'Your appointment was booked');
     }
 
@@ -106,5 +107,11 @@ class FrontendController extends Controller
     {
         $doctors = Appointment::with('doctor')->whereDate('date', $request->date)->get();
         return $doctors;
+    }
+
+    public function myPrescription()
+    {
+        $prescriptions = Prescription::where('user_id', auth()->user()->id)->get();
+        return view('my-prescription', compact('prescriptions'));
     }
 }
