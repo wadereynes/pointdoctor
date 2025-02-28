@@ -112,11 +112,9 @@
                             <!-- <input type="text" name="department" class="form-control @error('department') is-invalid @enderror" value="{{ old('department') }}"> -->
                             <select name="department" class="form-control @error('department') is-invalid @enderror">
                                 <option value="">Please select</option>
-                                <option value="Cardiologist">Cardiologist</option>
-                                <option value="Family-Physician">Family-Physician</option>
-                                <option value="Ophthalmologist">Ophthalmologist</option>
-                                <option value="Neurologist">Neurologist</option>
-                                <option value="Dentist">Dentist</option>
+                                @foreach(App\Models\Department::all() as $d)
+                                    <option value="{{ $d->department }}">{{ $d->department }}</option>
+                                @endforeach
                             </select>
                             @error('department')
                                 <span class="invalid-feedback" role="alert">
@@ -164,7 +162,7 @@
                                     </span>
                                 @enderror
                             </div>
-                        
+
                     </div>
 
                     <div class="form-group">
@@ -185,4 +183,4 @@
         </div>
     </div>
 </div>
-@endsection 
+@endsection

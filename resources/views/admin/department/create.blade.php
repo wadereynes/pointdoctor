@@ -35,7 +35,7 @@
                 </div>
             @endif
             <div class="card">
-                <div class="card-header"><h3>Add doctor</h3></div>
+                <div class="card-header"><h3>Add department</h3></div>
                 <div class="card-body">
                     <form class="forms-sample" action="{{ route('department.store') }}" method="post" enctype="multipart/form-data">
                         @csrf
