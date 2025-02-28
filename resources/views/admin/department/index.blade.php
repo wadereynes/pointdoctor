@@ -9,7 +9,7 @@
                     <i class="ik ik-inbox bg-blue"></i>
                     <div class="d-inline">
                         <h5>Departments</h5>
-                        <span>list of all departments</span>
+                        <span>List of all departments</span>
                     </div>
                 </div>
             </div>
@@ -55,15 +55,14 @@
                                     <td>{{ $department->department }}</td>
                                     <td>
                                         <div class="table-actions">
-                                            <a href="#" data-toggle="modal" data-target="#exampleModal{{ $department->id }}">
-                                                <i class="ik ik-eye"></i></button>
-                                            </a>
-                                            <a href="{{ route('doctor.edit', [$department->id]) }}">
+                                            <a href="{{ route('department.edit', [$department->id]) }}">
                                                 <i class="ik ik-edit-2"></i>
                                             </a>
-                                            <a href="{{ route('doctor.show', [$department->id]) }}">
-                                                <i class="ik ik-trash-2"></i>
-                                            </a>
+                                            <form action="{{ route('department.destroy', [$department->id]) }}" method="post">
+                                                @method('DELETE')
+                                                @csrf
+                                                <button type="submit"><i class="ik ik-trash-2"></i></button>
+                                            </form>
                                         </div>
                                     </td>
                                 </tr>
