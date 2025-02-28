@@ -77,6 +77,12 @@ php artisan make:middleware Patient
 
 php artisan make:controller PatientlistController
 
+php artisan make:model Department -m
+
+php artisan migrate
+
+php artisan make:controller DepartmentController -r (six method)
+
 ===============
 LARAVEL 8.0
 composer create-project --prefer-dist laravel/laravel=8.0.* pointdoctor
